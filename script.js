@@ -61,6 +61,7 @@ newBookButton.addEventListener("click", () => {
         newTitle.id = "title";
         newTitle.name = "title";
         newTitle.type = "text";
+        newTitle.required = true;
         
         const titleLabel = document.createElement("label");
         titleLabel.textContent = "Title: ";
@@ -73,6 +74,7 @@ newBookButton.addEventListener("click", () => {
         newAuthor.id = "author";
         newAuthor.name = "author";
         newAuthor.type = "text";
+        newAuthor.required = true;
     
         const authorLabel = document.createElement("label");
         authorLabel.for = "author";
@@ -85,6 +87,7 @@ newBookButton.addEventListener("click", () => {
         newPages.id = "pages";
         newPages.name = "pages";
         newPages.type = "number";
+        newPages.required = true;
     
         const pagesLabel = document.createElement("label");
         pagesLabel.for = "pages";
