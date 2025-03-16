@@ -75,7 +75,7 @@ newBookButton.addEventListener("click", () => {
         newAuthor.type = "text";
     
         const authorLabel = document.createElement("label");
-        authorLabel.id = "author";
+        authorLabel.for = "author";
         authorLabel.textContent = "Author: "
     
         form.appendChild(authorLabel);
@@ -87,17 +87,36 @@ newBookButton.addEventListener("click", () => {
         newPages.type = "number";
     
         const pagesLabel = document.createElement("label");
-        pagesLabel.id = "pages";
+        pagesLabel.for = "pages";
         pagesLabel.textContent = "Number of Pages: ";
         
         form.appendChild(pagesLabel);
         pagesLabel.appendChild(newPages);
     
         const newRead = document.createElement("input");
-        newRead.type = "button";
-        newRead.textContent = "Add Book";
+        newRead.type = "submit";
+        newRead.value = "Add Book";
+        newRead.classList.add(".addBook")
         form.appendChild(newRead);
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById("title").value;
+            console.log(title);
+
+            const author = document.getElementById("author").value;
+            console.log(author);
+
+            const pages = document.getElementById("pages").value;
+            console.log(pages);
+
+            
+            myLibrary.push(new Book(title, author, pages, true));
+            createBooks();
+        });
     }
 })
 
+//Click Add book button to create new Book object and Add to library array
 
