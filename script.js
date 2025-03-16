@@ -51,10 +51,14 @@ function createBooks () {
 //create form to add new book
 
 const form = document.querySelector("form");
+const submitMessage = document.createElement("p");
 
 const newBookButton = document.querySelector('.newBookBtn');
 newBookButton.addEventListener("click", () => {
     if (!document.getElementById("myForm")) {
+        if (document.getElementById("message")) {
+            form.innerHTML= "";
+        }
         form.id = "myForm";
 
         const newTitle = document.createElement("input");
@@ -96,11 +100,11 @@ newBookButton.addEventListener("click", () => {
         form.appendChild(pagesLabel);
         pagesLabel.appendChild(newPages);
     
-        const newRead = document.createElement("input");
-        newRead.type = "submit";
-        newRead.value = "Add Book";
-        newRead.classList.add(".addBook")
-        form.appendChild(newRead);
+        const addBook = document.createElement("input");
+        addBook.type = "submit";
+        addBook.value = "Add Book";
+        addBook.classList.add(".addBook")
+        form.appendChild(addBook);
 
         form.addEventListener("submit", function(event) {
             event.preventDefault();
@@ -113,10 +117,23 @@ newBookButton.addEventListener("click", () => {
 
             const pages = document.getElementById("pages").value;
             console.log(pages);
-
             
             myLibrary.push(new Book(title, author, pages, true));
             createBooks();
+
+            newTitle.remove();
+            titleLabel.remove();
+            newAuthor.remove();
+            authorLabel.remove();
+            newPages.remove();
+            pagesLabel.remove();
+            addBook.remove();
+
+            
+            const myMessage = "Your book has been added to the library!";
+            submitMessage.innerHTML = myMessage;
+            form.appendChild(submitMessage);
+            form.id = "message";
         });
     }
 })
