@@ -99,6 +99,46 @@ newBookButton.addEventListener("click", () => {
         
         form.appendChild(pagesLabel);
         pagesLabel.appendChild(newPages);
+
+        //form inputs for read or not read status
+
+        const newRead = document.createElement("fieldset");
+        form.appendChild(newRead);
+        
+        const readStatus = document.createElement("legend");
+        readStatus.textContent = "Have you already read this book?";
+        newRead.appendChild(readStatus);
+
+        //radio button and label for "read"
+        const hasRead = document.createElement("input");
+        hasRead.type = "radio";
+        hasRead.name = "readStatus";
+        hasRead.id = "hasRead";
+        hasRead.value = "read";
+        hasRead.required = true;
+
+        const readLabel = document.createElement("label");
+        readLabel.for = "read-status";
+        readLabel.textContent = "yes";
+
+        newRead.appendChild(readLabel);
+        readLabel.appendChild(hasRead);
+
+        //radio button and label for "not read"
+        const hasNotRead = document.createElement("input")
+        hasNotRead.type = "radio";
+        hasNotRead.name = "readStatus";
+        hasNotRead.id = "hasNotRead";
+        hasNotRead.value = "not read";
+
+        const notReadLabel = document.createElement("label");
+        notReadLabel.for = "read-status";
+        notReadLabel.textContent = "no";
+
+        newRead.appendChild(notReadLabel);
+        notReadLabel.appendChild(hasNotRead);
+
+        //submit button ro add book
     
         const addBook = document.createElement("input");
         addBook.type = "submit";
@@ -106,6 +146,7 @@ newBookButton.addEventListener("click", () => {
         addBook.classList.add(".addBook")
         form.appendChild(addBook);
 
+        //Click Add book button to create new Book object and Add to library array
         form.addEventListener("submit", function(event) {
             event.preventDefault();
 
@@ -121,6 +162,8 @@ newBookButton.addEventListener("click", () => {
             myLibrary.push(new Book(title, author, pages, true));
             createBooks();
 
+            //remove inputs
+
             newTitle.remove();
             titleLabel.remove();
             newAuthor.remove();
@@ -128,8 +171,8 @@ newBookButton.addEventListener("click", () => {
             newPages.remove();
             pagesLabel.remove();
             addBook.remove();
+            newRead.remove();
 
-            
             const myMessage = "Your book has been added to the library!";
             submitMessage.innerHTML = myMessage;
             form.appendChild(submitMessage);
@@ -138,5 +181,5 @@ newBookButton.addEventListener("click", () => {
     }
 })
 
-//Click Add book button to create new Book object and Add to library array
+
 
