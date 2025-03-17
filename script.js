@@ -57,15 +57,20 @@ function createBooks () {
         bookPages.classList.add("bookPages");
         book.appendChild(bookPages);
 
-        //variables for read and unread
+        //book status
 
         const bookRead = document.createElement("p");
         bookRead.textContent = myLibrary[i].read;
         bookRead.classList.add("bookRead");
         book.appendChild(bookRead);
-        
-        bookRead.classList.add("bookRead");
-        book.appendChild(bookRead);
+
+        //create button to change book status: read
+
+        const readButton = document.createElement("button");
+        readButton.classList.add(".readBtn");
+        readButton.textContent = "Change Read Status";
+
+        book.appendChild(readButton);  
         
         library.appendChild(book);
     };    
