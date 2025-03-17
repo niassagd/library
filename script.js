@@ -209,7 +209,7 @@ form.addEventListener("submit", function(event) {
     const pages = document.getElementById("pages").value;
     console.log(pages);
 
-    const bookStatus = document.getElementsByName("bookStatus").value;
+    const bookStatus = document.querySelector('input[name="bookStatus"]:checked').value;
     console.log(bookStatus);
     
     myLibrary.push(new Book(title, author, pages, bookStatus));
