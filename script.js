@@ -74,7 +74,13 @@ function createBooks () {
         bookPages.textContent = `${myLibrary[i].pages} pages`;
         bookPages.classList.add("bookPages");
         book.appendChild(bookPages);
-        
+
+        //remove book button
+        const removeButton = document.createElement("button");
+        removeButton.classList.add("removeBtn");
+        removeButton.textContent = "X Delete";
+        book.appendChild(removeButton);
+
         library.appendChild(book);
     };    
 }
