@@ -42,7 +42,9 @@
   /* CSS Reset above */
   :root {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: rgb(201, 250, 250);
+    --mainWhite: rgb(232 232 232);
+    --primaryColor: rgb(34, 58, 61);
+    background-color: var(--mainWhite);
   }
 
   .book  {
@@ -51,22 +53,51 @@
     margin: 23vh 3vh 3vh 3vh;
     text-align: center;
     padding: 25px;
-    background-color: rgb(241, 203, 153);
+    background: linear-gradient(to left, #6fa5b6, #a3eaff, #a3eaff, #639cb3);
     color: rgb(82, 46, 10);
-    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.541) 10px 10px;
+    border-top-right-radius: 50% 3%;
+    border-top-left-radius: 50% 3%;
+    border-bottom-right-radius: 2% 2%;
+    border-bottom-left-radius: 2% 2%;
+    border-bottom: rgba(0, 0, 0, 0.219) groove 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .bookTitle {
+    font-weight: bold;
+  }
+
+  .bookAuthor {
+    font-size: 0.9rem;
+    
+  }
+
+  .bookPages {
+    font-size: 0.75rem;
+  }
+
+  .bookRead {
+    font-size: 0.9rem;
   }
 
   .header {
+    color: var(--mainWhite);
     position: fixed;
     width: 100vw;
     height: 20vh;
     display: flex;
     flex-direction: column;
-  
-    background-color: rgb(241, 227, 255);
+    align-items: center;
+    background-color: var(--primaryColor);
+    box-shadow: rgba(0, 0, 0, 0.295) 10px 10px 10px;
   }
 
   .header-top {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -74,12 +105,25 @@
 
   }
 
-  .newBookBtn {
-
+  button,
+  input[type="submit"] {
     color: rgb(0, 0, 0);
-    background-color: rgb(165, 241, 255);
-    border: rgb(28, 210, 255) 3px solid;
+    background-color: var(--mainWhite);
+    border-color: var(--mainWhite);
+    box-shadow: rgba(0, 0, 0, 0.568) 0px 5px;
     border-radius: 20px;
+    padding: 5px 10px;
+  }
+
+  button:hover,
+  input[type="submit"]:hover {
+    cursor: pointer;
+  }
+
+  input[type="submit"] {
+    color: var(--mainWhite);
+    background-color: var(--primaryColor);
+    border-color: var(--primaryColor);
   }
 
   .library {
@@ -87,22 +131,60 @@
     flex-wrap: wrap;
   }
 
-  input {
+  input[type="text"],
+  input[type="number"] {
+    background-color: rgb(192, 230, 255);
+    border: none;
     border-radius: 15px;
+    width: 100%;
+    box-shadow: inset rgba(0, 0, 0, 0.144) 0px 0px 10px;
   }
 
   form {
-    width: 100vw;
+    color: black;
+    width: 500px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 15px;
-    padding: 10px 25px;
-    background-color: rgb(187, 252, 252);
+    padding: 25px 25px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.555) 0px 0px 10px;
   }
 
   
 
+
+  .readBtn {
+    border-radius: 30px;
+    font-size: .75rem;
+    background: linear-gradient(to left, var(--primaryColor), var(--mainWhite), var(--primaryColor));
+    border: rgba(255, 255, 255, 0.29) dotted 3px;
+    box-shadow: none;
+    color: var(--primaryColor);
+  }
+
+  #hidden {
+    visibility: hidden;
+  }
+
+  label {
+    width: 100%;
+  }
+  
+  fieldset {
+    border: none;
+    display: flex;
+  }
+
+  fieldset > div  {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
   input[type="button"] {
     margin-left: auto;
-
   }
+

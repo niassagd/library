@@ -52,10 +52,7 @@ function createBooks () {
         bookAuthor.classList.add("bookAuthor");
         book.appendChild(bookAuthor);
 
-        const bookPages = document.createElement("p");
-        bookPages.textContent = `${myLibrary[i].pages} pages`;
-        bookPages.classList.add("bookPages");
-        book.appendChild(bookPages);
+        
 
         //book status
 
@@ -67,10 +64,16 @@ function createBooks () {
         //create button to change book status: read
 
         const readButton = document.createElement("button");
-        readButton.classList.add(".readBtn");
+        readButton.classList.add("readBtn");
         readButton.textContent = "Change Read Status";
 
         book.appendChild(readButton);  
+
+        //book pages
+        const bookPages = document.createElement("p");
+        bookPages.textContent = `${myLibrary[i].pages} pages`;
+        bookPages.classList.add("bookPages");
+        book.appendChild(bookPages);
         
         library.appendChild(book);
     };    
@@ -83,6 +86,10 @@ function createBooks () {
 
 const form = document.querySelector("form");
 const submitMessage = document.createElement("p");
+
+//new book form heading
+const formHeading = document.createElement("h2");
+formHeading.innerHTML = "New Book";
 
 //new book title
 
@@ -107,7 +114,7 @@ const authorLabel = document.createElement("label");
 authorLabel.for = "author";
 authorLabel.textContent = "Author: "
 
-//new book pages
+//form: new book pages
 
 const newPages = document.createElement("input");
         newPages.id = "pages";
@@ -117,12 +124,11 @@ const newPages = document.createElement("input");
     
         const pagesLabel = document.createElement("label");
         pagesLabel.for = "pages";
-        pagesLabel.textContent = "Number of Pages: ";
+        pagesLabel.textContent = "# of Pages: ";
     
 //form inputs for read or not read status
 
 const newRead = document.createElement("fieldset");
-
 
 const readStatus = document.createElement("legend");
 readStatus.textContent = "Have you already read this book?";
@@ -139,6 +145,9 @@ hasRead.required = true;
 const readLabel = document.createElement("label");
 readLabel.for = "bookStatus";
 readLabel.textContent = "yes";
+
+const radioDiv = document.createElement("div");
+radioDiv.classList.add("radioBtns");
 
 //radio button and label for "not read"
 const hasNotRead = document.createElement("input")
@@ -167,35 +176,32 @@ newBookButton.addEventListener("click", () => {
             form.innerHTML= "";
         }
         form.id = "myForm";
+        //form heading
 
-        
-    
+        form.appendChild(formHeading);
+        //title input
         form.appendChild(titleLabel);
         titleLabel.appendChild(newTitle);
-        
-    
+        //author input
         form.appendChild(authorLabel);
         authorLabel.appendChild(newAuthor);
-        
+        //pages input
         form.appendChild(pagesLabel);
         pagesLabel.appendChild(newPages);
-
+        //fieldset containing radio buttons read yes and no
         form.appendChild(newRead);
-
+        //legend
         newRead.appendChild(readStatus);
-
-        newRead.appendChild(readLabel);
-        readLabel.appendChild(hasRead);
-
-        
-
-        newRead.appendChild(notReadLabel);
-        notReadLabel.appendChild(hasNotRead);
-
-        
+        //radio button div 
+        newRead.appendChild(radioDiv);
+            //read: yes
+            radioDiv.appendChild(readLabel);
+            readLabel.appendChild(hasRead);
+            //read: no
+            radioDiv.appendChild(notReadLabel);
+            notReadLabel.appendChild(hasNotRead);
+        //add book submit button
         form.appendChild(addBook);
-
-        
     }
 })
 
@@ -225,7 +231,7 @@ form.addEventListener("submit", function(event) {
     form.reset();
 
     //remove inputs
-
+    formHeading.remove();
     newTitle.remove();
     titleLabel.remove();
     newAuthor.remove();
@@ -237,7 +243,7 @@ form.addEventListener("submit", function(event) {
 
     
 
-    const myMessage = "Your book has been added to the library!";
+    const myMessage = `Your book, ${title}, by ${author} has been added to the library!`;
     submitMessage.innerHTML = myMessage;
     form.appendChild(submitMessage);
     form.id = "message";
