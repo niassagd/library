@@ -140,7 +140,7 @@ const readStatus = document.createElement("legend");
 readStatus.textContent = "Have you already read this book?";
 
 
-//radio button and label for "read"
+//form: radio button and label for "read"
 const hasRead = document.createElement("input");
 hasRead.type = "radio";
 hasRead.name = "bookStatus";
@@ -155,7 +155,7 @@ readLabel.textContent = "yes";
 const radioDiv = document.createElement("div");
 radioDiv.classList.add("radioBtns");
 
-//radio button and label for "not read"
+//form: radio button and label for "not read"
 const hasNotRead = document.createElement("input")
 hasNotRead.type = "radio";
 hasNotRead.name = "bookStatus";
@@ -166,14 +166,20 @@ const notReadLabel = document.createElement("label");
 notReadLabel.for = "bookStatus";
 notReadLabel.textContent = "no";
 
-//create submit button to add book
+//form: create submit button to add book
     
 const addBook = document.createElement("input");
 addBook.type = "submit";
 addBook.value = "Add Book";
 addBook.classList.add(".addBook")
 
-// button to open form for new book 
+//form: create button to close form
+
+const closeFormBtn = document.createElement("button");
+closeFormBtn.classList.add("closeBtn");
+closeFormBtn.textContent = "x";
+
+//new book button to open form for new book 
 
 const newBookButton = document.querySelector('.newBookBtn');
 newBookButton.addEventListener("click", () => {
@@ -208,6 +214,8 @@ newBookButton.addEventListener("click", () => {
             notReadLabel.appendChild(hasNotRead);
         //add book submit button
         form.appendChild(addBook);
+        //add close form button
+        form.appendChild(closeFormBtn);
     }
 })
 
