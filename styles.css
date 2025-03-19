@@ -47,13 +47,17 @@
     --bronze: rgb(174 121 0);
     background-color: var(--mainWhite);
   }
+  
+  body {
+    position: relative;
+  }
 
   .book  {
     width: 150px;
     height: 74vh;
     margin: 23vh 3vh 3vh 3vh;
     text-align: center;
-    padding: 25px;
+    padding: 100px 25px;
     background: linear-gradient(to left, #6fa5b6, #a3eaff, #a3eaff, #639cb3);
     color: rgb(82, 46, 10);
     box-shadow: rgba(0, 0, 0, 0.541) 10px 10px;
@@ -65,9 +69,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     position: relative;
-    z-index: -1;
   }
 
   .bookTitle {
@@ -76,7 +79,6 @@
 
   .bookAuthor {
     font-size: 0.9rem;
-    
   }
 
   .bookPages {
@@ -97,6 +99,7 @@
     align-items: center;
     background-color: var(--primaryColor);
     box-shadow: rgba(0, 0, 0, 0.295) 10px 10px 10px;
+    z-index: 1;
   }
 
   .header-top {
@@ -105,7 +108,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-
+    text-shadow: rgba(0, 0, 0, 0.568) 0px 5px;
   }
 
   button,
@@ -143,6 +146,11 @@
     box-shadow: inset rgba(0, 0, 0, 0.144) 0px 0px 10px;
   }
 
+  .formDiv {
+    display: flex;
+    justify-content: center;
+  }
+
   form {
     color: black;
     width: 500px;
@@ -154,7 +162,9 @@
     background-color: rgb(245, 245, 245);
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.295) 0px 0px 10px;
-    position: relative;
+    position: fixed;
+    top: 100px;
+    z-index: 999;
   }
 
   .closeBtn {
