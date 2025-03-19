@@ -81,6 +81,14 @@ function createBooks () {
         removeButton.textContent = "X Delete";
         book.appendChild(removeButton);
 
+        const bookId = myLibrary[i].id;
+        console.log(bookId);
+
+        removeButton.addEventListener("click", () => {
+            myLibrary.splice(i, 1);
+            createBooks();
+        })
+
         library.appendChild(book);
     };    
 }
@@ -220,7 +228,6 @@ newBookButton.addEventListener("click", () => {
 })
 
 //close btn event listener
-
 closeFormBtn.addEventListener("click", () => {
     form.id = "hidden";
 })
@@ -266,3 +273,5 @@ form.addEventListener("submit", function(event) {
     form.appendChild(submitMessage);
     form.id = "message";
 });
+
+
