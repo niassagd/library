@@ -78,7 +78,8 @@ function createBooks () {
         //remove book button
         const removeButton = document.createElement("button");
         removeButton.classList.add("removeBtn");
-        removeButton.textContent = "X Delete";
+        removeButton.textContent = "X";
+        removeButton.title = "Remove from library"
         book.appendChild(removeButton);
 
         const bookId = myLibrary[i].id;
@@ -229,6 +230,19 @@ newBookButton.addEventListener("click", () => {
 
 //close btn event listener
 closeFormBtn.addEventListener("click", () => {
+    //reset form
+    form.reset();
+    //remove inputs
+    formHeading.remove();
+    newTitle.remove();
+    titleLabel.remove();
+    newAuthor.remove();
+    authorLabel.remove();
+    newPages.remove();
+    pagesLabel.remove();
+    addBook.remove();
+    newRead.remove();
+    //hide form
     form.id = "hidden";
 })
 
