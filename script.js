@@ -4,7 +4,7 @@ const harryPotter1 = {
     title: "Harry Potter 1",
     author: "J. K. Rowling",
     pages: 250,
-    read: "read",
+    read: "read ✓",
     id: 54343,
 }
 
@@ -12,7 +12,7 @@ const catInTheHat = {
     title: "Cat In The Hat",
     author: "Suess",
     pages: 20,
-    read: "not read",
+    read: "unread",
     id:36363,
 }
 
@@ -52,22 +52,29 @@ function createBooks () {
         bookAuthor.classList.add("bookAuthor");
         book.appendChild(bookAuthor);
 
-        
-
-        //book status
-
-        const bookRead = document.createElement("p");
-        bookRead.textContent = myLibrary[i].read;
-        bookRead.classList.add("bookRead");
-        book.appendChild(bookRead);
-
         //create button to change book status: read
 
         const readButton = document.createElement("button");
         readButton.classList.add("readBtn");
-        readButton.textContent = "Change Read Status";
+        
+        if (myLibrary[i].read === "read ✓") {
+            readButton.classList.add("hasRead");
+        };
+        readButton.textContent = myLibrary[i].read;
+        readButton.title = "Change read status";
 
         book.appendChild(readButton);  
+
+        readButton.addEventListener("click", () => {
+            if (myLibrary[i].read === "read ✓") {
+                myLibrary[i].read = "unread";
+                readButton.classList.remove("hasRead");
+            } else if (myLibrary[i].read === "unread") {
+                myLibrary[i].read = "read ✓";
+                readButton.classList.add("hasRead");
+            }
+            readButton.textContent = myLibrary[i].read;
+        });
 
         //book pages
         const bookPages = document.createElement("p");
@@ -154,7 +161,7 @@ const hasRead = document.createElement("input");
 hasRead.type = "radio";
 hasRead.name = "bookStatus";
 hasRead.id = "hasRead";
-hasRead.value = "read";
+hasRead.value = "read ✓";
 hasRead.required = true;
 
 const readLabel = document.createElement("label");
@@ -165,11 +172,11 @@ const radioDiv = document.createElement("div");
 radioDiv.classList.add("radioBtns");
 
 //form: radio button and label for "not read"
-const hasNotRead = document.createElement("input")
+const hasNotRead = document.createElement("input");
 hasNotRead.type = "radio";
 hasNotRead.name = "bookStatus";
 hasNotRead.id = "hasNotRead";
-hasNotRead.value = "not read";
+hasNotRead.value = "unread";
 
 const notReadLabel = document.createElement("label");
 notReadLabel.for = "bookStatus";
@@ -228,24 +235,6 @@ newBookButton.addEventListener("click", () => {
     }
 })
 
-//close btn event listener
-closeFormBtn.addEventListener("click", () => {
-    //reset form
-    form.reset();
-    //remove inputs
-    formHeading.remove();
-    newTitle.remove();
-    titleLabel.remove();
-    newAuthor.remove();
-    authorLabel.remove();
-    newPages.remove();
-    pagesLabel.remove();
-    addBook.remove();
-    newRead.remove();
-    //hide form
-    form.id = "hidden";
-})
-
 //Click Add book button to create new Book object and Add to library array
 form.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -280,12 +269,30 @@ form.addEventListener("submit", function(event) {
     addBook.remove();
     newRead.remove();
 
-    
-
     const myMessage = `Your book, ${title}, by ${author} has been added to the library!`;
     submitMessage.innerHTML = myMessage;
     form.appendChild(submitMessage);
     form.id = "message";
 });
 
+//close btn event listener
+closeFormBtn.addEventListener("click", () => {
+    //reset form
+    form.reset();
+    //remove inputs
+    formHeading.remove();
+    newTitle.remove();
+    titleLabel.remove();
+    newAuthor.remove();
+    authorLabel.remove();
+    newPages.remove();
+    pagesLabel.remove();
+    addBook.remove();
+    newRead.remove();
+
+    //remove 
+    submitMessage.remove();
+    //hide form
+    form.id = "hidden";
+})
 

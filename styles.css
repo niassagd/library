@@ -44,6 +44,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     --mainWhite: rgb(232 232 232);
     --primaryColor: rgb(34, 58, 61);
+    --bronze: rgb(174 121 0);
     background-color: var(--mainWhite);
   }
 
@@ -66,6 +67,7 @@
     align-items: center;
     justify-content: space-evenly;
     position: relative;
+    z-index: -1;
   }
 
   .bookTitle {
@@ -181,15 +183,22 @@
   padding: 0px;
   background: #0000005e;
   bottom: 20px;
+  color: #000000a6;
 }
 
   .readBtn {
+    width: 75px;
     border-radius: 30px;
     font-size: .75rem;
     background: linear-gradient(to left, var(--primaryColor), var(--mainWhite), var(--primaryColor));
     border: rgba(255, 255, 255, 0.29) dotted 3px;
     box-shadow: none;
     color: var(--primaryColor);
+  }
+
+  .hasRead {
+    background: linear-gradient(to left, var(--bronze), var(--mainWhite), var(--bronze));
+    border: var(--mainWhite) dotted 3px;
   }
 
   #hidden {
