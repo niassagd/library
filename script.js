@@ -219,7 +219,11 @@ newBookButton.addEventListener("click", () => {
     }
 })
 
+//close btn event listener
 
+closeFormBtn.addEventListener("click", () => {
+    form.id = "hidden";
+})
 
 //Click Add book button to create new Book object and Add to library array
 form.addEventListener("submit", function(event) {
